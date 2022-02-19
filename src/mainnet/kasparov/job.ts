@@ -1,5 +1,5 @@
 import { Job, JobWorkableGroup, makeid, prelog, toKebabCase } from '@keep3r-network/cli-utils';
-import { getGoerliSdk } from '../../eth-sdk-build';
+import { getRopstenSdk } from '../../eth-sdk-build';
 import metadata from './metadata.json';
 
 const getWorkableTxs: Job['getWorkableTxs'] = async (args) => {
@@ -22,7 +22,7 @@ const getWorkableTxs: Job['getWorkableTxs'] = async (args) => {
 
   // setup job
 	const signer = args.fork.ethersProvider.getSigner(args.keeperAddress);
-	const { jobA: job } = getGoerliSdk(signer);
+	const { kasparov: job } = getRopstenSdk(signer);
 
   try {
     // check if job is workable
@@ -35,7 +35,7 @@ const getWorkableTxs: Job['getWorkableTxs'] = async (args) => {
     // create work tx
     const tx = await job.populateTransaction.work({
       nonce: args.keeperNonce,
-      gasLimit: 2_000_000,
+      gasLimit: 3_000_000,
       type: 2,
     });
 
@@ -52,7 +52,7 @@ const getWorkableTxs: Job['getWorkableTxs'] = async (args) => {
       correlationId,
     });
   } catch (err: unknown) {
-    logConsole.warn('Simulation failed, probably in cooldown');
+    logConsole.warn('Simulation failed, probably out of credits');
   }
 
   // finish job process
