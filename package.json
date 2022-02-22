@@ -1,6 +1,6 @@
 {
   "name": "@wei3erhase/keep3r-cli-job-kasparov",
-  "version": "1.3.0-rc.0",
+  "version": "1.3.0",
   "description": "Kasparov - Keep3r CLI Job",
   "keywords": [
     "keep3r",
