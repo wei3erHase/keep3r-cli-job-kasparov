@@ -1,7 +1,7 @@
 {
-  "name": "@defi-wonderland/keep3r-cli-job-boilerplate",
-  "version": "1.0.2",
-  "description": "Keep3r CLI Job Boilerplate",
+  "name": "@wei3erHase/keep3r-cli-job-kasparov",
+  "version": "1.1.0-rc.0",
+  "description": "Kasparov - Keep3r CLI Job",
   "keywords": [
     "keep3r",
     "cli",
@@ -11,13 +11,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/defi-wonderland/keep3r-cli-job-boilerplate.git"
+    "url": "git+https://github.com/wei3erHase/keep3r-cli-job-kasparov.git"
   },
   "license": "MIT",
-  "author": "DeFi Wonderland",
+  "author": "Wei3erHase",
   "contributors": [
-    "0xGorilla (https://github.com/0xGorilla)",
-    "0xng (https://github.com/0xng)",
     "wei3erHase (https://github.com/wei3erHase)"
   ],
   "files": [

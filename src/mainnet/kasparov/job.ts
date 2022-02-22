@@ -1,5 +1,5 @@
 import { Job, JobWorkableGroup, makeid, prelog, toKebabCase } from '@keep3r-network/cli-utils';
-import { getRopstenSdk } from '../../eth-sdk-build';
+import { getMainnetSdk } from '../../eth-sdk-build';
 import metadata from './metadata.json';
 
 const getWorkableTxs: Job['getWorkableTxs'] = async (args) => {
@@ -22,7 +22,7 @@ const getWorkableTxs: Job['getWorkableTxs'] = async (args) => {
 
   // setup job
 	const signer = args.fork.ethersProvider.getSigner(args.keeperAddress);
-	const { kasparov: job } = getRopstenSdk(signer);
+	const { kasparov: job } = getMainnetSdk(signer);
 
   try {
     // check if job is workable
