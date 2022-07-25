@@ -28,12 +28,13 @@ const getWorkableTxs: Job['getWorkableTxs'] = async (args) => {
       blockTag: args.advancedBlock,
     });
 
-    const moveGas = 1_000_000;
+    const moveGas = 500_000; // NOTE: testing on prod
     const moveCost = await keep3rHelper.callStatic.getRewardAmountFor(args.keeperAddress, moveGas, {
       blockTag: args.advancedBlock,
     });
 
     const estimateMoves = jobCredits.div(moveCost);
+    logConsole.log(`Trying to work multiple (${estimateMoves}) times`);
 
     // TODO: what if estimateMoves is bigger than moves[] (inaccesible)
     await job.callStatic.workMany(estimateMoves.toNumber(), {
@@ -42,7 +43,7 @@ const getWorkableTxs: Job['getWorkableTxs'] = async (args) => {
 
     // check if job is workable
 
-    logConsole.log(`Job is workable`);
+    logConsole.log(`Job is workable multiple (${estimateMoves}) times`);
 
     // create work tx
     const tx = await job.populateTransaction.workMany(estimateMoves, {
